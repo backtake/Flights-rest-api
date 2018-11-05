@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Fare;
+import com.example.demo.model.FareRequest;
 import com.example.demo.model.Market;
 import com.example.demo.service.MarketService;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class MarketControllerImpl {
     }
 
     @PostMapping(path = "")
-    public void addFare(@RequestBody Fare fare) {
-        this.service.addFaresData(fare);
+    public void addFare(@RequestBody FareRequest fareRequest) {
+        this.service.addFaresData(fareRequest);
     }
 }
