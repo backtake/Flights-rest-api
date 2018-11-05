@@ -10,8 +10,6 @@ public class MarketService {
 
     public void addFaresData(FareRequest fareRequest) {
         List<Fare> fares = fareRequest.getFares();
-        AllFares.getAllFares().addAll(fares);//teoretycznie może się przydać do wyświetlania wszystkich fare
-
         List<Market> markets = createMarketsOutOfFares(fares);
         getAllMarkets().addAll(markets);
     }
