@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public class MarketService {
 
-    public void addFaresToAll(FareRequest fareRequest) {
+    public void addFaresData(FareRequest fareRequest) {
         List<Fare> fares = fareRequest.getFares();
         AllFares.getAllFares().addAll(fares);//teoretycznie może się przydać do wyświetlania wszystkich fare
 
