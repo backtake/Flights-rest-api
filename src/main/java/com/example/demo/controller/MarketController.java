@@ -1,19 +1,21 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Fare;
 import com.example.demo.model.FareRequest;
 import com.example.demo.model.Market;
 import com.example.demo.service.MarketService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "/market")
-public class MarketControllerImpl {
+public class MarketController {
 
     private MarketService service;
 
-    public MarketControllerImpl(MarketService service) {this.service = service;}
+    public MarketController(MarketService service) {this.service = service;}
 
     @GetMapping(path = "/markets")
     public List<Market> index() {
@@ -21,7 +23,7 @@ public class MarketControllerImpl {
     }
 
     @PostMapping(path = "")
-    public void addFare(@RequestBody FareRequest fareRequest) {
-        this.service.addFaresData(fareRequest);
+    public void addFare(@RequestBody ArrayList<Fare> allFares) {
+        this.service.addFaresData(allFares);
     }
 }
