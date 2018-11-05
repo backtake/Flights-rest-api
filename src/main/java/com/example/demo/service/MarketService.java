@@ -4,6 +4,7 @@ import com.example.demo.model.*;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class MarketService implements MarketProvider{
@@ -59,24 +60,19 @@ public class MarketService implements MarketProvider{
 
     private Market createMarket(Map.Entry<String, LinkedList<Fare>> pair) {
         String marketId = pair.getKey();
-        String maxCompetitor = getMaxCompetitor(pair.getValue());
-        Integer maxFare = getMaxFare(pair.getValue());
-        String minCompetitor = getMinCompetitor(pair.getValue());
-        Integer minFare = getMinFare(pair.getValue());
-        float avgFare = getAvgFare(pair.getValue());
+        LinkedList<Fare> sortedFares = pair.getValue().
+                stream().
+                sorted(Comparator.comparing(Fare::getFare)).
+                collect(Collectors.toCollection(LinkedList::new));
+
+        String maxCompetitor = sortedFares.getLast().getAirline();
+        Integer maxFare = sortedFares.getLast().getFare();
+        String minCompetitor = sortedFares.getFirst().getAirline();
+        Integer minFare = sortedFares.getFirst().getFare();
+        float avgFare = (float) pair.getValue().
+                stream().mapToInt(Fare::getFare).average().orElse(Float.NaN);
 
         return new Market(marketId, maxCompetitor, maxFare, minCompetitor, minFare, avgFare);
     }
 
-    private String getMaxCompetitor(LinkedList<Fare> fares) {
-        Fare fareWithMaxCompetitor = fares.get(0);
-
-        for (Fare fare : fares) {
-            if(fare.getFare()>fareWithMaxCompetitor.getFare()) {
-                fareWithMaxCompetitor = fare;
-            }
-        }
-
-        return fareWithMaxCompetitor.getAirline();
-    }
 }
