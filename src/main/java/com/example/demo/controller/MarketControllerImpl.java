@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.FareRequest;
+import com.example.demo.model.Fare;
 import com.example.demo.model.Market;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +23,7 @@ public class MarketControllerImpl implements MarketController {
 
     @Override
     @PostMapping(path = "")
-    public void addFares(@RequestBody FareRequest fareRequest) {
-        this.service.addFaresData(fareRequest);
+    public void addFare(@RequestBody Fare fare) {
+        this.service.addFaresData(fare);
     }
 }

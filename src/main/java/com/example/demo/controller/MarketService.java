@@ -3,13 +3,15 @@ package com.example.demo.controller;
 import com.example.demo.model.*;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class MarketService {
 
-    public void addFaresData(FareRequest fareRequest) {
-        List<Fare> fares = fareRequest.getFares();
+    public void addFaresData(Fare fare) {
+        List<Fare> fares = new ArrayList<>();
+        fares.add(fare);
         List<Market> markets = createMarketsOutOfFares(fares);
         getAllMarkets().addAll(markets);
     }
