@@ -13,8 +13,8 @@ public class MarketService implements MarketProvider{
         return MarketResponse.getAllMarkets();
     }
 
-    public void addFaresData(FareRequest fareRequest) {
-        List<Market> markets = createMarketsOutOfFares(fareRequest.getAllFares());
+    public void addFaresData(ArrayList<Fare> allFares) {
+        List<Market> markets = createMarketsOutOfFares(allFares);
         getAllMarkets().addAll(markets);
     }
 
@@ -49,9 +49,7 @@ public class MarketService implements MarketProvider{
     private List<Market> getMarkets(Map<String, LinkedList<Fare>> flightRoutesFares) {
         List<Market> markets = new LinkedList<>();
 
-        Iterator<Map.Entry<String, LinkedList<Fare>>> it = flightRoutesFares.entrySet().iterator();
-        while(it.hasNext()) {
-            Map.Entry<String, LinkedList<Fare>> pair = it.next();
+        for (Map.Entry<String, LinkedList<Fare>> pair : flightRoutesFares.entrySet()) {
             markets.add(createMarket(pair));
         }
 
@@ -70,7 +68,9 @@ public class MarketService implements MarketProvider{
         String minCompetitor = sortedFares.getFirst().getAirline();
         Integer minFare = sortedFares.getFirst().getFare();
         float avgFare = (float) pair.getValue().
-                stream().mapToInt(Fare::getFare).average().orElse(Float.NaN);
+                stream().
+                mapToInt(Fare::getFare).
+                average().orElse(Float.NaN);
 
         return new Market(marketId, maxCompetitor, maxFare, minCompetitor, minFare, avgFare);
     }
