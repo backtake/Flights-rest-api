@@ -7,10 +7,10 @@ public class Fare {
     private String airline;
     private String origin;
     private String destination;
-    private Date date;
+    private String date;
     private Integer fare;
 
-    public Fare(String airline, String origin, String destination, Date date, Integer fare) {
+    public Fare(String airline, String origin, String destination, String date, Integer fare) {
         this.airline = airline;
         this.origin = origin;
         this.destination = destination;
@@ -42,11 +42,11 @@ public class Fare {
         this.destination = destination;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
