@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Fare;
 import com.example.demo.model.FareRequest;
 import com.example.demo.model.Market;
 import com.example.demo.service.MarketService;

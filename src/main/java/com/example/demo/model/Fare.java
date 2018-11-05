@@ -1,7 +1,5 @@
 package com.example.demo.model;
 
-import java.util.Date;
-
 public class Fare {
 
     private String airline;
