@@ -9,7 +9,7 @@ can see what are our competitors up to. Just by looking at the statistics.
 -  **path ="/market/markets" method GET** - return overall statistics in form of json
 
 -  **path ="/market" method POST** - pushes single competitor fare data to our application
-     as json data 
+     as list of json data 
 
 
 
