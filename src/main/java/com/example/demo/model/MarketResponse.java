@@ -1,11 +1,10 @@
 package com.example.demo.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MarketResponse {
 
-    private static List<Market> allMarkets = new ArrayList<>();
+    private static List<Market> allMarkets;
 
     public static List<Market> getAllMarkets() {
         return allMarkets;
