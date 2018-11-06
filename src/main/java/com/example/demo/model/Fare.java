@@ -16,6 +16,8 @@ public class Fare {
         this.fare = fare;
     }
 
+    public Fare() {}
+
     public String getAirline() {
         return airline;
     }
