@@ -17,10 +17,7 @@ can see what are our competitors up to. Just by looking at the statistics.
 
 - #### To run the application, execute:
 
-```
-    ./gradlew build && java -jar build/libs/demo-0.0.1-SNAPSHOT.jar
-```
-- #### If you are using Maven, execute:
+
 ```
     mvn package && java -jar target/demo-0.0.1-SNAPSHOT.jar
 ```
