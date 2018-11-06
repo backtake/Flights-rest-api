@@ -13,7 +13,7 @@ public class MarketService implements MarketProvider{
         return MarketResponse.getAllMarkets();
     }
 
-    public void addFaresData(List<Fare> fares) {
+    public void createMarketOutOfGivenFares(List<Fare> fares) {
         List<Market> markets = createMarketsOutOfFares(fares);
         getAllMarkets().addAll(markets);
     }
@@ -63,10 +63,10 @@ public class MarketService implements MarketProvider{
                 sorted(Comparator.comparing(Fare::getFare)).
                 collect(Collectors.toCollection(LinkedList::new));
 
-        String maxCompetitor = sortedFares.getFirst().getAirline();
-        Integer maxFare = sortedFares.getFirst().getFare();
-        String minCompetitor = sortedFares.getLast().getAirline();
-        Integer minFare = sortedFares.getLast().getFare();
+        String maxCompetitor = sortedFares.getLast().getAirline();
+        Integer maxFare = sortedFares.getLast().getFare();
+        String minCompetitor = sortedFares.getFirst().getAirline();
+        Integer minFare = sortedFares.getFirst().getFare();
         float avgFare = (float) pair.getValue().
                 stream().
                 mapToInt(Fare::getFare).

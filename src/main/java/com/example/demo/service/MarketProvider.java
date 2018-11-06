@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface MarketProvider {
 
-    void addFaresData(List<Fare> fares);
+    void createMarketOutOfGivenFares(List<Fare> fares);
     List<Market> getAllMarkets();
 }

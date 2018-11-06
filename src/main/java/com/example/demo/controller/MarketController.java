@@ -21,6 +21,6 @@ public class MarketController {
 
     @RequestMapping(value = "/market", method = RequestMethod.POST, consumes = "application/json")
     public void addFare(@RequestBody List<Fare> fares) {
-        this.service.addFaresData(fares);
+        this.service.createMarketOutOfGivenFares(fares);
     }
 }
